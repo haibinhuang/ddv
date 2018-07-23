@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://d3js.org/d3.v4.js"></script>
+<title>DDV Data Visualization</title>
+<meta charset="UTF-8">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+    font-family: Arial;
+    margin: 0;
+}
+
+/* Header/logo Title */
+.header {
+    padding: 15px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+}
+
+/* Column container */
+.row {  
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+    flex: 30%;
+    align-self: center;
+	background-color: white;
+    padding: 10px;
+}
+
+.mid {
+    flex: 6%;
+	align-self: center;
+    background-color: white;
+    padding: 10px;
+}
+
+/* Main column */
+.main {
+    flex: 64%;
+    align-self: center;
+	background-color: white;
+    padding: 10px;
+}
+
+/* Footer */
+.footer {
+    padding: 1px;
+    text-align: center;
+    background: #ddd;
+}
+
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <h1>Data Visualization</h1>
+	<input type="button" value="About the Visualization" id = "about" />
+	<input type="button" value="Scene 1" id = "scene1" />
+	<input type="button" value="Scene 2" id = "scene2" />
+	<input type="button" value="Scene 3" id = "scene3" />
+</div>
+
+<!-- The flexible grid (content) -->
+<div class="row">
+  <div class="side" id="div0_left_col">
+    <h2>About this Visualization</h2>
+	<h3>Narrative visualization structure</h3>
+	<p>This visualization is using interactive slideshow hybrid structure. Each slide contains some information and/or chart. On certain slide, the viewer can also dive deep to find out more details regarding those charts. It is best for the users to follow the slideshow but users are free to jump around the scenes.</p>
+	<h3>Scenes</h3>
+	<p>Each slide represents a scene. Some text only and some with both text and chart.</p> 
+	<h3>Annotations</h3>
+	<p>The scenes (slides) have been annotated whenever necessary. For example, each chart has a short summary; each chart contains a title; most of the charts contain x and y axis labels. Data are labeled with legend and represented by color, size, shapes etc. When users hover around certain data points, more detailed information will appear in tooltips.</p>
+    <h3>Parameters</h3>
+	<p>Each chart has its own parameters, such as dataset, scales of axis, size of data points, etc. Certain slides contain options to change some parameters (dataset and results in different representations of data).</p> 
+
+  </div>
+  <div class="mid" id = "div0_mid">
+  </div>
+  <div class="main" id="div0_right_col">
+	<h3>Triggers</h3>
+	<p>The navigation buttons on top of the screen serve as triggers for scene change. Mouse click on those will enable users to navigate this visualization. Because each chart has its own parameters, scene change will also result in parameter changes. On all charts, hover (mouseover) can trigger tooltip display. On some charts, a drop down menu can trigger dataset and chart change.</p> 
+	<h3>System requirement</h3>
+	<p>This visualization can only be viewed using modern browsers (such as </p>
+	<h3>Disclaimer</h3>
+	<p>I adapted ideas and codes from numerous resources (books, w3schools, stackoverflow, bl.ocks.org, etc.).</p>
+	<p>Dataset and selected resources for this project:</p>
+	<ul>
+		<li><a href="https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-S-Chronic-Disease-Indicators-CDI-/g4ie-h725">Chronic Disease Mortality Data</a></li>
+		<li><a href="https://www2.census.gov/programs-surveys/popest/datasets/2010-2017/national/totals/nst-est2017-alldata.csv">State Population Data</a></li>
+		<li><a href="https://www2.census.gov/programs-surveys/popest/datasets/2010-2017/national/totals/nst-est2017-alldata.csv">W3Schools</a></li>
+		<li><a href="https://bl.ocks.org/mbostock/3884955">Multi-Series Line Chart</a></li>
+		<li><a href="https://bl.ocks.org/mbostock/3019563">Margin Convention</a></li>
+		<li><a href="http://bl.ocks.org/jhubley/17aa30fd98eb0cc7072f ">line chart with dropdown selector</a></li>
+		<li><a href="http://alignedleft.com/work/d3-book-2e">Interactive Data Visualization for the Web, 2nd Edition</a></li>
+	</ul>
+  </div>
+  
+  <div class="side" id="div1_left_col">
+    <h2>Chronic Disease Mortality</h2>
+	<p>Chronic diseases represented seven of the top 10 causes of death in the United States in 2010. These top 7 chronic disease contributed to about 2/3 of death in this US in 2010. It is important to study the mortality and risk factors over time to help federal and state agencies to plan and implement effective interventions. This visualization presents introductory, aggregated and trend data during 2010 and 2014 at the state and national level.
+	</p>
+	<h3>Questions to address</h3>
+	<ol><li>What chronic disease caused most death during the period studied?</li>
+		<li>What's the trend of the chronic disease mortality during the period studied?</li>
+	</ol>
+	<h3>What's showing here?</h3>
+	<p>The overall picture of chronic disease mortality. The scatter plot shows the mortality against population at the state level from 2010 to 2014 for the selected 7 chronic disease (represented by 7 colored circles). Size of circles is proportional to mortality.</p> 
+	<h3>What can you explore?</h3>
+	<ul>
+		<li>The mortality difference among diseases.</li>
+		<li>The correlation of mortality in each state with its population.</li>
+		<li>The overall picture of what disease caused most death.</li>
+		<li>The actual data (absolute mortality) of each disease in state at certain year by hovering on data point (circle). The tooltip shows year, state and mortality for each data point.</li>
+	</ul>
+  </div>
+  <div class="mid" id = "div1_mid">
+  </div>
+	<div class="main" id="div1_right_col">
+  </div>
+  
+  <div class="side" id="div2_left_col">
+	<h3>What's showing here?</h3>
+	<p>The total mortality of studied 7 chronic disease at the national level from 2010 to 2014.</p> 
+	<h3>What can you explore?</h3>
+	<ul><li>The top killer of the 7 chronic disease</li>
+		<li>The actual data (absolute mortality) of each disease at the national level during those 5 years studied by hovering on data point (bar).</li>
+	</ul>
+  </div>
+  <div class="mid" id = "div2_mid">
+  </div>
+  <div class="main" id="div2_right_col">
+  </div>
+  
+  <div class="side" id="div3_left_col">
+	<h3>What's showing here?</h3>
+	<p>The trend of mortality (absolute or rate) studied 7 chronic disease at the national level from 2010 to 2014.</p> 
+	<h3>What can you explore?</h3>
+	<ul>
+		<li>The top killer of the 7 chronic disease</li>
+		<li>The trend of mortality (absolute) during those years. Please keep in mind that, there is only average data for cancer from 2010 to 2014. The yearly data for cancer were populated from the average data. In other words, the absolute mortality data for cancer from 2010 to 2014 are same.</li>
+		<li>The trend of mortality (rate) during those years (since US population was growing for those years, it is best to compare rate (absolute mortality/population)). This can be done by choose corresponding type of data from drop down menu.</li>
+		<li>The actual data (both absolute mortality and rate) of each disease at the national level during those 5 years studied by hovering on data point (circle).</li>
+	</ul>
+  </div>
+  <div class="mid" id = "div3_mid">
+   	<select id="AorR">
+		<option value = "Absolute" selected = "selected">Absolute</option>
+		<option value = "Rate" >Rate</option>
+	</select>
+
+  </div>
+  <div class="main" id="div3_right_col">
+
+  </div>
+  
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <h6>Presented by Haibin Huang</h6>
+</div>
+
+<script>
+
+	var margin = {top: 60, right: 100, bottom: 60, left: 80};
+
+	var width = 900 - margin.left - margin.right,
+		height = 600 - margin.top - margin.bottom;
+	var padding = 40;
+
+	//function to parse year time
+	var parseTime = d3.timeParse("%Y");
+	var formatTime = d3.timeFormat("%Y");
+	
+	//function to process data
+	var rowConverter = function(d) {
+		return {
+		Year: parseTime(d.Year),
+		State: d.State,
+		Disease: d.Disease,
+		Mortality: parseInt(d.Mortality),
+		Population: parseInt(d.Population),
+		Rate: parseFloat(d.Rate)
+		};
+		
+	
+	};
+	//read in csv data and store it in dataset variable
+	d3.csv("CDM1.csv", rowConverter, function(data) {
+		var data1 = data;
+		var color = d3.scaleOrdinal(d3.schemeCategory10)
+						.domain(data.map(function(d) { return d.Disease; }));
+		var xScale = d3.scaleLog()
+						.domain([300000, 50000000])
+						.range([0, width]);
+		var yScale = d3.scaleLog()
+						.domain([10, 100000])
+						.range([height, 0]);
+		var rScale = d3.scaleLog()
+						.domain([1, 100000])
+						.range([0,10]);
+		var svg1 = d3.select("#div1_right_col").append("svg")
+						.attr("width", width + margin.left + margin.right)
+						.attr("height", height + margin.top + margin.bottom)
+						.append("g")
+						.attr("transform", "translate(" + margin.left + "," + margin.top + ")");		
+		svg1.selectAll("circle")
+			.data(data1)
+			.enter()
+			.append("circle")
+			.attr("cx", function(d) {return xScale(d.Population);})
+			.attr("cy", function(d) {return yScale(d.Mortality);})
+			.attr("r", function(d) {return rScale(d.Mortality);})
+			.attr("stroke", function(d) { return color(d.Disease); })
+			.attr("fill-opadisease", 0.5)
+			.attr("stoke-width", 0)
+			.attr("fill", function(d) { return color(d.Disease); })
+			.attr("fill-opacity", 0)
+			.on("mouseover", function(d) {
+				//Get this bar's x/y values, then augment for the tooltip
+				var xPosition = parseFloat(d3.select(this).attr("cx")) + 40;
+				var yPosition = parseFloat(d3.select(this).attr("cy")) + 40;
+				//Create the tooltip label
+				d3.select(this)
+					.attr("fill-opacity", 1.0); 
+				svg1.append("text")
+					.attr("id", "tooltip")
+					.attr("x", xPosition)
+					.attr("y", yPosition)
+					.attr("text-anchor", "middle")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "14px")
+					.attr("font-weight", "bold")
+					.attr("fill", "black")
+					.text(formatTime(d.Year) + " | " + d.State + " | " + d.Mortality);
+				   })
+		    .on("mouseout", function() {
+		   		//Remove the tooltip
+				d3.select(this)
+					.attr("fill-opacity", 0);
+				d3.select("#tooltip").remove();
+			});
+		
+		var legend_cooridindates = [ {"Disease": "Alcohol (Chronic liver disease)", "x": 10, "y": 10},
+									 {"Disease": "Asthma", "x": 10, "y": 30},
+									 {"Disease": "Cancer (Invasive)", "x": 10, "y": 50},
+									 {"Disease": "Cardiovascular Disease", "x": 10, "y": 70},
+									 {"Disease": "Chronic Kidney Disease", "x": 10, "y": 90},
+									 {"Disease": "Chronic Obstructive Pulmonary Disease", "x": 10, "y": 110},
+									 {"Disease": "Diabetes", "x": 10, "y": 130},
+									];
+		svg1.selectAll("rect").data(legend_cooridindates)
+			.enter().append("rect")
+			.attr("x", function (d) { return d.x; } )
+			.attr("y", function (d) { return d.y; } )
+			.attr("width", 15)
+			.attr("height", 15)
+			.attr("fill", function (d) { return color(d.Disease) } )
+						
+		svg1.selectAll("text").data(legend_cooridindates)
+			.enter().append("text")
+			.attr("x", function (d) { return d.x + 20; } )
+			.attr("y", function (d) { return d.y + 13; } )
+			.attr("font-size", 13)
+			.text(function(d) {return d.Disease;});
+			
+		var xAxis = d3.axisBottom()
+						.scale(xScale);
+		var yAxis = d3.axisLeft()
+						.scale(yScale);
+		svg1.append("g")
+			.call(xAxis)
+			.attr("transform", "translate(0," + height + ")")
+			.selectAll("text")
+			.attr("font-size", "12px");
+		svg1.append("g")
+			.call(yAxis)
+			.selectAll("text")
+			.attr("font-size", "12px");
+		
+		svg1.append("text")
+			.attr("x", width/2)
+			.attr("y", 0)
+			.attr("text-anchor", "middle")
+			.attr("font-family", "sans-serif")
+			.attr("font-size", "16px")
+			.attr("font-weight", "bold")
+			.attr("fill", "black")
+			.text("Chronic Disease Mortality at State Level from Year 2010 to 2014");
+		
+		svg1.append("text")
+			.attr("x", width/2)
+			.attr("y", height + padding)
+			.attr("text-anchor", "middle")
+			.attr("font-family", "sans-serif")
+			.attr("font-size", "14px")
+			.attr("font-weight", "bold")
+			.attr("fill", "black")
+			.text("Population");
+		
+		svg1.append("text")
+			.attr("x", 0 - (height/2))
+			.attr("y", - 1.5 * padding)
+			.attr("text-anchor", "middle")
+			.attr("font-family", "sans-serif")
+			.attr("font-size", "14px")
+			.attr("font-weight", "bold")
+			.attr("fill", "black")
+			.attr("transform", "rotate(-90)")
+			.text("Mortality");
+			
+		var data2 = d3.nest()
+				.key(function(d) { return d.Disease; })
+				.rollup(function(v) { return d3.sum(v, function(d) { return d.Mortality; }); })
+				.entries(data);
+		
+		var xScale2 = d3.scaleBand()
+			.domain(data2.map(function(d) { return d.key;}))
+			.rangeRound([0, width])
+			.padding(0.1);
+		
+		var yScale2 = d3.scaleLinear()
+				.domain([0, 5500000])
+				.range([height, 0]);
+		
+		var svg2 = d3.select("#div2_right_col").append("svg")
+				.attr("width", width + margin.left + margin.right)
+				.attr("height", height + margin.top + margin.bottom)
+				.append("g")
+				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");		
+
+		svg2.selectAll("rect")
+			.data(data2)
+			.enter()
+			.append("rect")
+			.attr("x", function(d) {return xScale2(d.key) + padding;})
+			.attr("y", function(d) {return yScale2(d.value) - 3 * padding;})
+			.attr("width", xScale2.bandwidth())
+			.attr("height", function(d) {return height - yScale2(d.value);})
+			.attr("stroke", function(d) { return color(d.key); })
+			.attr("stoke-width", 1)
+			.attr("fill", function(d) { return color(d.key); })
+			.on("mouseover", function(d) {
+				//Get this bar's x/y values, then augment for the tooltip
+				var xPosition = parseFloat(d3.select(this).attr("x")) + 50;
+				var yPosition = parseFloat(d3.select(this).attr("y") - 10);
+				//Create the tooltip label
+				svg2.append("text")
+					.attr("id", "tooltip2")
+					.attr("x", xPosition)
+					.attr("y", yPosition)
+					.attr("text-anchor", "middle")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "14px")
+					.attr("font-weight", "bold")
+					.attr("fill", "black")
+					.text(d.value);
+				   })
+		    .on("mouseout", function() {
+		   		//Remove the tooltip
+				d3.select("#tooltip2").remove();
+			});
+
+		var xAxis2 = d3.axisBottom()
+						.scale(xScale2);
+		
+		var yAxis2 = d3.axisLeft()
+						.scale(yScale2)
+						.tickFormat(d3.format(".0e"));
+		
+		svg2.append("g")
+			.call(xAxis2)
+			.attr("transform", "translate(" + padding + "," + (height - 3 * padding) + ")")
+			.selectAll("text")
+			.attr("font-size", "12px")
+			.style("text-anchor", "end")
+			.attr("dx", "-.8em")
+			.attr("dy", "-.55em")
+			.attr("transform", "rotate(-45)" );
+
+		svg2.append("g")
+			.call(yAxis2)
+			.attr("transform", "translate(" + padding + "," + padding * (-3) + ")")
+			.selectAll("text")
+			.attr("font-size", "12px");
+			
+		svg2.append("text")
+			.attr("x", width/2)
+			.attr("y", - margin.top + 20)
+			.attr("text-anchor", "middle")
+			.attr("font-family", "sans-serif")
+			.attr("font-size", "16px")
+			.attr("font-weight", "bold")
+			.attr("fill", "black")
+			.text("Total Chronic Disease Mortality in US from Year 2010 to 2014");
+							
+		svg2.append("text")
+			.attr("x", 3 * padding - (height/2) )
+			.attr("y", -20)
+			.attr("text-anchor", "middle")
+			.attr("font-family", "sans-serif")
+			.attr("font-size", "16px")
+			.attr("font-weight", "bold")
+			.attr("fill", "black")
+			.attr("transform", "rotate(-90)")
+			.text("Mortality");
+	});				
+	
+	function type(d, _, columns) {
+		d.date = parseTime(d.date);
+		for (var i = 1, n = columns.length, c; i < n; ++i) d[c = columns[i]] = +d[c];
+		return d;
+	};
+	
+	function svg3_draw(data, yAxis_label, title) {
+
+		d3.select("#div3_right_col").select("svg").remove();
+		
+		var svg3 = d3.select("#div3_right_col").append("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			.append("g")
+			.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+			.attr("id", "svg3");	
+			
+		var diseases = data.columns.slice(1).map(function(id) {
+				return {
+						id: id,
+						values: data.map(function(d) {
+								return {date: d.date, disease: d[id]};
+						})
+				};
+		});
+			
+		var startYear = d3.min(data, function(d) { return d.date; });
+		var endYear = d3.max(data, function(d) { return d.date; });
+		var xScale3 = d3.scaleTime()
+						.domain([d3.timeYear.offset(startYear, -1),  
+								d3.timeYear.offset(endYear, 1)])
+						.range([0, width]);
+		var	yScale3 = d3.scaleLinear()
+						.domain([0, d3.max(diseases, function(c) { return d3.max(c.values, function(d) { return d.disease; }); })])
+						.range([height, 0]);
+		var	color3 = d3.scaleOrdinal(d3.schemeCategory10)
+						.domain(diseases.map(function(c) { return c.id; }));;
+		
+		var line = d3.line()
+				.x(function(d) { return xScale3(d.date); })
+				.y(function(d) { return yScale3(d.disease); });
+
+		svg3.append("g")
+			.attr("id", "xAxis")
+			.attr("transform", "translate(0," + height + ")")
+			.call(d3.axisBottom(xScale3))
+			.selectAll("text")
+			.attr("font-size", "12px");;
+
+			svg3.append("g")
+				.attr("id", "yAxis")
+				.call(d3.axisLeft(yScale3))
+				.selectAll("text")
+				.attr("font-size", "12px");
+				
+			svg3.append("text")
+				.attr("id", "title")
+				.attr("x", width/2)
+				.attr("y", - 30)
+				.attr("text-anchor", "middle")
+				.attr("font-family", "sans-serif")
+				.attr("font-size", "16px")
+				.attr("font-weight", "bold")
+				.attr("fill", "black")
+				.text(title);
+				
+			svg3.append("text")
+				.attr("id", "xAxis_label")
+				.attr("x", width/2)
+				.attr("y", height + padding + 10)
+				.attr("text-anchor", "middle")
+				.attr("font-family", "sans-serif")
+				.attr("font-size", "16px")
+				.attr("font-weight", "bold")
+				.attr("fill", "black")
+				.text("Year");
+			
+			
+			svg3.append("text")
+				.attr("x", - (height/2) )
+				.attr("y", -65)
+				.attr("text-anchor", "middle")
+				.attr("font-family", "sans-serif")
+				.attr("font-size", "14px")
+				.attr("font-weight", "bold")
+				.attr("fill", "black")
+				.attr("transform", "rotate(-90)")
+				.text(yAxis_label);
+				
+				
+									
+			var disease = svg3.selectAll(".disease")
+				.data(diseases)
+				.enter().append("g")
+				.attr("class", "disease");
+
+			disease.append("path")
+				.attr("class", "line")
+				.attr("d", function(d) { return line(d.values); })
+				.style("stroke", function(d) { return color3(d.id); })
+				.attr("fill", "none")
+				.attr("stroke-width", "3px");
+
+			disease.append("text")
+				.attr("id", "data_label")
+				.datum(function(d) { return {id: d.id, value: d.values[d.values.length - 1]}; })
+				.attr("transform", function(d) { return "translate(" + xScale3(d.value.date) + "," + yScale3(d.value.disease) + ")"; })
+				.attr("x", 12)
+				.attr("dy", " - 0.35em")
+				.style("font", "11px sans-serif")
+				.text(function(d) { return d.id; });
+			
+			var radius = 7;
+			diseases.forEach(function(d, i) {
+				svg3.append("g")
+					.selectAll("dot")
+					.data(d.values)
+					.enter()
+					.append("circle")
+					.attr("r", radius)
+					.attr("cx", function(v) { return xScale3(v.date); })
+					.attr("cy", function(v) { return yScale3(v.disease); })
+					.attr("fill", color3(d.id))
+					.on("mouseover", function(w) {
+					//Get this bar's x/y values, then augment for the tooltip
+						var xPosition = parseFloat(d3.select(this).attr("cx"));
+						var yPosition = parseFloat(d3.select(this).attr("cy"));
+						var r = parseFloat(d3.select(this).attr("r"));
+					//Create the tooltip label
+						d3.select(this)
+							.attr("r", 2 * radius);
+						svg3.append("text")
+							.attr("id", "tooltip")
+							.attr("x", xPosition + 20)
+							.attr("y", yPosition - 15)
+							.attr("text-anchor", "middle")
+							.attr("font-family", "sans-serif")
+							.attr("font-size", "14px")
+							.attr("font-weight", "bold")
+							.attr("fill", "black")
+							.text(w.disease);
+						   })
+					.on("mouseout", function() {
+					//Remove the tooltip
+						d3.select("#tooltip").remove();
+						d3.select(this)
+							.attr("r", radius);
+					});
+			
+				});
+	};
+	d3.csv("CDM2.csv", type, function(data) {
+			svg3_draw(data, "Absolute Mortality", "Chronic Disease Mortality in US from 2010 to 2014");	
+	});
+
+// drop down menu 
+	d3.select("#AorR")
+			.on("change", function () {
+				var sect = document.getElementById("AorR");
+				var section = sect.options[sect.selectedIndex].value;
+console.log(section);
+		if (section == "Absolute") { 
+		  d3.csv("CDM2.csv", type, function(data) {
+				svg3_draw(data, "Absolute Mortality", "Chronic Disease Mortality in US from 2010 to 2014");
+		})		
+		} else  { 
+		 d3.csv("CDM3.csv", type, function(data) {
+			svg3_draw(data, "Mortality Rate (percent)", "Chronic Disease Mortality Rate in US from 2010 to 2014");
+		});
+		}
+		});
+	
+	document.getElementById("div0_left_col").style.display = 'block';
+	document.getElementById("div0_mid").style.display = "none";
+	document.getElementById("div0_right_col").style.display = 'block';
+	document.getElementById("div1_left_col").style.display = 'none';
+	document.getElementById("div1_mid").style.display = "none";
+	document.getElementById("div1_right_col").style.display = 'none';
+	document.getElementById("div2_left_col").style.display = 'none';
+	document.getElementById("div2_mid").style.display = "none";
+	document.getElementById("div2_right_col").style.display = 'none';
+	document.getElementById("div3_left_col").style.display = 'none';
+	document.getElementById("div3_mid").style.display = "none";
+	document.getElementById("div3_right_col").style.display = 'none';
+	
+	document.getElementById("about").onclick  = function() {
+	document.getElementById("div0_left_col").style.display = 'block';
+	document.getElementById("div0_mid").style.display = "none";
+	document.getElementById("div0_right_col").style.display = 'block';
+	document.getElementById("div1_left_col").style.display = 'none';
+	document.getElementById("div1_mid").style.display = "none";
+	document.getElementById("div1_right_col").style.display = 'none';
+	document.getElementById("div2_left_col").style.display = 'none';
+	document.getElementById("div2_mid").style.display = "none";
+	document.getElementById("div2_right_col").style.display = 'none';
+	document.getElementById("div3_left_col").style.display = 'none';
+	document.getElementById("div3_mid").style.display = "none";
+	document.getElementById("div3_right_col").style.display = 'none';
+	}
+	
+	document.getElementById("scene1").onclick  = function() {
+	document.getElementById("div0_left_col").style.display = 'none';
+	document.getElementById("div0_mid").style.display = "none";
+	document.getElementById("div0_right_col").style.display = 'none';
+	document.getElementById("div1_left_col").style.display = 'inline';
+	document.getElementById("div1_mid").style.display = "none";
+	document.getElementById("div1_right_col").style.display = 'inline';
+	document.getElementById("div2_left_col").style.display = 'none';
+	document.getElementById("div2_mid").style.display = "none";
+	document.getElementById("div2_right_col").style.display = 'none';
+	document.getElementById("div3_left_col").style.display = 'none';
+	document.getElementById("div3_mid").style.display = "none";
+	document.getElementById("div3_right_col").style.display = 'none';
+	}
+	
+	document.getElementById("scene2").onclick  = function() {
+	document.getElementById("div0_left_col").style.display = 'none';
+	document.getElementById("div0_mid").style.display = "none";
+	document.getElementById("div0_right_col").style.display = 'none';
+	document.getElementById("div1_left_col").style.display = 'none';
+	document.getElementById("div1_mid").style.display = "none";
+	document.getElementById("div1_right_col").style.display = 'none';
+	document.getElementById("div2_left_col").style.display = 'inline';
+	document.getElementById("div2_mid").style.display = "none";
+	document.getElementById("div2_right_col").style.display = 'inline';
+	document.getElementById("div3_left_col").style.display = 'none';
+	document.getElementById("div3_mid").style.display = "none";
+	document.getElementById("div3_right_col").style.display = 'none';
+	}
+	
+	document.getElementById("scene3").onclick  = function() {
+	document.getElementById("div0_left_col").style.display = 'none';
+	document.getElementById("div0_mid").style.display = "none";
+	document.getElementById("div0_right_col").style.display = 'none';
+	document.getElementById("div1_left_col").style.display = 'none';
+	document.getElementById("div1_mid").style.display = "none";
+	document.getElementById("div1_right_col").style.display = 'none';
+	document.getElementById("div2_left_col").style.display = 'none';
+	document.getElementById("div2_mid").style.display = "none";
+	document.getElementById("div2_right_col").style.display = 'none';
+	document.getElementById("div3_left_col").style.display = 'inline';
+	document.getElementById("div3_mid").style.display = "inline";
+	document.getElementById("div3_right_col").style.display = 'inline';
+	}
+	
+	
+
+	
+</script>
+
+</body>
+</html>
