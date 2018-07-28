@@ -362,7 +362,7 @@ d3.csv("CDM1.csv", rowConverter, function(data) {
 					.attr("y", yPosition)
 					.attr("text-anchor", "middle")
 					.attr("fill", "black")
-					.text(formatTime(d.date) + " | " + d.State + " | " + d.Mortality);
+					.text(formatTime(d.Year) + " | " + d.State + " | " + d.Mortality);
 				   })
 			//remove tooltip when off
 			.on("mouseout", function() {
