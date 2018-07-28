@@ -137,7 +137,7 @@ body {
 	</p>
 	<h3>Dataset</h3>
 	<p>
-	The <a href="https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-S-Chronic-Disease-Indicators-CDI-/g4ie-h725">Chronic Disease Mortality Dataset</a> were downloaded from CDC website. The <a href="https://www2.census.gov/programs-surveys/popest/datasets/2010-2017/national/totals/nst-est2017-alldata.csv">State population Data</a> were downloaded from government census website. 
+	The <a href="https://chronicdata.cdc.gov/Chronic-Disease-Indicators/U-S-Chronic-Disease-Indicators-CDI-/g4ie-h725">Chronic Disease Mortality Data</a> were downloaded from CDC website. The <a href="https://www2.census.gov/programs-surveys/popest/datasets/2010-2017/national/totals/nst-est2017-alldata.csv">State population Data</a> were downloaded from government census website. 
 	</p>
 	<h3>Pre-processing</h3>
 	<ol>
@@ -148,13 +148,13 @@ body {
 		<li>I am also interested in State level data beyond this assignment, I kept the data at state level (I removed aggregated data at national level (“US” in “LocationAbbr” field)).</li> 
 		<li>The data set end up to only contain data from year 2010 to 2014, although original dataset contain some indicators up to 2016.</li> 
 		<li>For cancer data, it only contain average yearly mortality from 2010 to 2014, I expanded the data (average) to year 2010 through 2014, so now cancer has yearly data from 2010 to 2014 although they have same data from year to year.</li> 
-		<li>I removed some non-essential columns. The final dataset (for Scene 1 an 2) contains 5 columns: date (renamed from YearStart), State (renamed from LocationAbbr), Disease (combining Topic and Question), Mortality (renamed from DataValue) and Population (after combining with census data). Data for Scene 3 were prepared using Microsoft Excel's pivotTable from the dataset used for Scene 1 and 2.</li>
+		<li>I removed some non-essential columns. The final dataset (for making charts in Scene 1 an 2) contains 5 columns: date (renamed from YearStart), State (renamed from LocationAbbr), Disease (combining Topic and Question), Mortality (renamed from DataValue) and Population (after combining with census data). Data for Scene 3 were prepared using Microsoft Excel's pivotTable from the dataset used for Scene 1 and 2.</li>
 		<li>Save the processed date set as csv files.</li>
 	</ol>
 	
 	<h3>Questions to answer</h3>
-	<ol><li>What chronic disease caused most death during the period studied?</li>
-		<li>What's the trend of the chronic disease mortality during the period studied?</li>
+	<ol><li>What chronic disease caused most death during the studied period?</li>
+		<li>What's the trend of the chronic disease mortality during the studied period?</li>
 	</ol>
 	<h3>Navigation</h3>
 	<p>Using the 5 navigation button located in the header area to navigate through this visualization.</p>
@@ -163,14 +163,14 @@ body {
 
   <div class="side" id="div2_left_col">
 	<h3>What's showing here?</h3>
-	<p>The overall picture of chronic disease mortality. The scatter plot shows the mortality against population at the state level from 2010 to 2014 for the selected 7 chronic disease (represented by 7 colored circles). Size of circles is proportional to mortality.</p> 
+	<p>The overall picture of chronic disease mortality. The scatter plot shows the mortality against population at the state level from 2010 to 2014 for the selected 7 chronic diseases (represented by 7 colored circles). The size of the circle is proportional to the corresponding mortality value.</p> 
 	<h3>What can you explore?</h3>
 	<ul>
 		<li>The mortality difference among diseases.</li>
 		<li>The mortality difference among states.</li>
 		<li>The correlation between mortality and population.</li>
 		<li>The overall picture of what disease caused most death.</li>
-		<li>The actual data (absolute mortality) of each disease in each state at each year by hovering on data point (circle). The tooltips show year, state and mortality for each data point.</li>
+		<li>The actual data (absolute mortality) of each disease in each state at each year by hovering on data point (circle). The tooltip shows year, state and mortality for each data point.</li>
 		<li>Change X and Y axis scale through drop down menu to see the transformation of the graph.</li>
 	</ul>
   </div>
@@ -193,7 +193,7 @@ body {
 	<p>The total mortality of each chronic disease at the national level from 2010 to 2014.</p> 
 	<h3>What can you explore?</h3>
 	<ul><li>The top chronic disease killer</li>
-		<li>The actual data (absolute mortality) of each disease at the national level during those 5 years studied by hovering on data point (bar).</li>
+		<li>The actual data (absolute mortality) of each disease at the national level during those 5 years by hovering on data point (bar).</li>
 	</ul>
   </div>
 
@@ -202,13 +202,13 @@ body {
   
   <div class="side" id="div4_left_col">
 	<h3>What's showing here?</h3>
-	<p>The trend of 7 studied chronic disease mortality (absolute or rate) at the national level from 2010 to 2014.</p> 
+	<p>The trend of chronic disease mortality (absolute or rate) at the national level from 2010 to 2014.</p> 
 	<h3>What can you explore?</h3>
 	<ul>
 		<li>The top chronic disease killer at each year</li>
 		<li>The trend of mortality (absolute) during those years.</li>
-		<li>The trend of mortality (rate) during those years (since US population was growing for those years, it is best to compare rate (absolute mortality/population)). This can be done by choose corresponding type of data from drop down menu.</li>
-		<li>The actual data (both absolute mortality and rate) of each disease at the national level during those 5 years studied by hovering on data point (circle).</li>
+		<li>The trend of mortality (rate) during those years (since US population was growing for those years, it is best to compare rate (absolute mortality/population)). This can be done by choose corresponding data type from drop down menu.</li>
+		<li>The actual data (both absolute mortality and rate) of each disease at the national level during those 5 years by hovering on data point (circle).</li>
 	</ul>
   </div>
 
@@ -221,25 +221,25 @@ body {
   </div>
   
   <div class="full" id="div5">
-    <h2>About this Visualization</h2>
+    <h2>About the Visualization</h2>
 	<h3>Narrative visualization structure</h3>
-	<p>This visualization is using interactive slideshow hybrid structure. Each slide contains some information and/or chart. On certain slide, the viewer can also dive deep to find out more details regarding those charts. It is best for the users to follow the slideshow but users are free to jump around the scenes.</p>
+	<p>This visualization is constructed with interactive slideshow hybrid structure. Each slide contains some information and/or chart. On certain slide, the viewer can also dive deep to find out more details regarding the data. It is best for the viewers to follow the slideshow but the viewers are free to jump around the scenes.</p>
 	<h3>Scenes</h3>
 	<p>Each slide represents a scene. Some text only and some with both text and chart.</p>
 		<ul>
 			<li><b>Introduciton</b></li>
 			<p>Short summary of importance of this study, where the data were obtained, how the data were pre-processed, what questions the visualization is trying to address and how to navigate through this visualization.</p>
 			<li><b>Scene 1</b></li>
-			<p>A scatter plot of mortality vs population at state level for each disease. Each disease is represented by one color. Log scale were used for both X and Y axis and the size of circle (data point: mortality for each disease in each state at each year) because of their data value range. Although I believe the log scale axises are the best to present data here, the viewer was given options (through drop down menu) to explore the transformation of the graph. The original chronic disease mortality dataset only contain one dimension of numerical value. In order to show an overview of the dataset, I added population data so that data points are relatively spread out. Tooltips show detailed information for each data point.</p>
+			<p>It contains a scatter plot of mortality vs population at state level for each disease. Each disease is represented by one color. Log scale were used for both X and Y axis and the size of circle (data point: mortality for each disease in each state at each year) because of their data value range. Although I believe the log scale axises are the best to present data here, the viewers were given the options (through drop down menu) to change the axis scales to observe the transformation of the graph. Tooltip shows detailed information for each data point.</p>
 			<li><b>Scene 2</b></li>
-			<p>A bar chart to show the total mortality for each disease. I chose linear scale for mortality this time because it can show difference really well and the viewer can easily see the mortality difference among diseases. Color of the bar indicate disease. Height of the bar is proportional to mortality. Tooltips show the real number.</p>
+			<p>A bar chart to show the total mortality for each disease. I chose linear scale for mortality this time because it can show difference really well and the viewer can easily see the mortality difference among diseases. Color of the bar indicate disease. Height of the bar is proportional to mortality. Tooltips show the real mortality number.</p>
 			<li><b>Scene 3</b></li>
-			<p>A line chart to show the trend of chronic disease mortality over time. I chose linear scale for mortality again because of subtle differences from year to year. Tooltips help the viewer to figure out the trend when the difference is really small. Also mortality rate is a better measure because of the ever-increasing population in those years studied. The viewer can explore this by choosing corresponding options in drop down menu.</p>
-			<li><b>About this Visualization</b></li>
-			<p>Description of narrative visualization structure, scenes, annotations, parameters, triggers, etc of this visualization.</p>
+			<p>A line chart to show the trend of chronic disease mortality over time. I chose linear scale for mortality again because of subtle differences from year to year. Tooltips help the viewer to figure out the trend when the difference is really small. Also mortality rate is a better measure because of the ever-increasing populations in those years. The viewers can explore this by choosing corresponding options in drop down menu.</p>
+			<li><b>About the Visualization</b></li>
+			<p>Description of narrative visualization structure, scenes, annotations, parameters, triggers, etc. of this visualization.</p>
 		</ul>	
 	<h3>Annotations</h3>
-	<p>The scenes (slides) have been annotated whenever necessary. For example, each chart has a short summary (What's showing here?) and a guide to viewers (What can you explore?); each chart contains a title; most of the charts contain x and y axis labels. Data are labeled with legend and represented by color, size, shapes etc. When users hover around certain data points, more detailed information will appear in tooltips.</p>
+	<p>The scenes (slides) have been annotated whenever necessary. For example, each chart has a short summary (What's showing here?) and a guide to viewers (What can you explore?); each chart contains a title; most of the charts contain x and y axis labels. Data are labeled with legend and represented by color, size, shapes etc. When viewers hover around data points, more detailed information will appear in tooltips.</p>
 	<h3>Parameters</h3>
 	<p>Each chart has its own parameters, such as dataset, scales of axis, size of data points, etc. Certain slides contain options to change parameters (X and Y axis scales in Scene 1; datasets in Scene 3).</p> 
 	<h3>Triggers</h3>
