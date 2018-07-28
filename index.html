@@ -149,7 +149,7 @@ body {
 		<li>The data set end up to only contain data from year 2010 to 2014, although original dataset contain some indicators up to 2016.</li> 
 		<li>For cancer data, it only contain average yearly mortality from 2010 to 2014, I expanded the data (average) to year 2010 through 2014, so now cancer has yearly data from 2010 to 2014 although they have same data from year to year.</li> 
 		<li>I removed some non-essential columns. The final dataset (for Scene 1 an 2) contains 5 columns: date (renamed from YearStart), State (renamed from LocationAbbr), Disease (combining Topic and Question), Mortality (renamed from DataValue) and Population (after combining with census data). Data for Scene 3 were prepared using Microsoft Excel's pivotTable from the dataset used for Scene 1 and 2.</li>
-		<li>Save the processed date set as csv file.</li>
+		<li>Save the processed date set as csv files.</li>
 	</ol>
 	
 	<h3>Questions to answer</h3>
@@ -190,9 +190,9 @@ body {
   
   <div class="side" id="div3_left_col">
 	<h3>What's showing here?</h3>
-	<p>The total mortality of studied 7 chronic disease at the national level from 2010 to 2014.</p> 
+	<p>The total mortality of each chronic disease at the national level from 2010 to 2014.</p> 
 	<h3>What can you explore?</h3>
-	<ul><li>The top killer of the 7 chronic disease</li>
+	<ul><li>The top chronic disease killer</li>
 		<li>The actual data (absolute mortality) of each disease at the national level during those 5 years studied by hovering on data point (bar).</li>
 	</ul>
   </div>
@@ -205,8 +205,8 @@ body {
 	<p>The trend of 7 studied chronic disease mortality (absolute or rate) at the national level from 2010 to 2014.</p> 
 	<h3>What can you explore?</h3>
 	<ul>
-		<li>The top killer of the 7 chronic disease</li>
-		<li>The trend of mortality (absolute) during those years. Please keep in mind that, there is only average data for cancer from 2010 to 2014. The yearly data for cancer were populated from the average data. In other words, the absolute mortality data for cancer from 2010 to 2014 are same.</li>
+		<li>The top chronic disease killer at each year</li>
+		<li>The trend of mortality (absolute) during those years.</li>
 		<li>The trend of mortality (rate) during those years (since US population was growing for those years, it is best to compare rate (absolute mortality/population)). This can be done by choose corresponding type of data from drop down menu.</li>
 		<li>The actual data (both absolute mortality and rate) of each disease at the national level during those 5 years studied by hovering on data point (circle).</li>
 	</ul>
