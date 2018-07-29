@@ -133,7 +133,7 @@ body {
 <div class="row">
    <div class="full" id="div1">
 	<h3>Introduction</h3>
-	<p>Chronic diseases represented seven of the top 10 causes of death in the United States in 2010. These top 7 chronic diseases contributed to about 2/3 of death in US in 2010. It is important to study the mortality and risk factors over time to help federal and state agencies to plan and implement effective interventions. This visualization presents introductory, aggregated and trend data for 7 selected chronic diseases (not exactly the same as the top 7 chronic diseases mentioned above, but largely overlapped) during 2010 and 2014 at the state and national level.
+	<p>Chronic diseases represented seven of the top 10 causes of death in the United States in 2010. These top 7 chronic diseases contributed to about 2/3 of deaths in the US in 2010. It is important to study the mortality and risk factors over time to help federal and state agencies plan and implement effective interventions. This visualization presents introductory, aggregated and trend data for 7 selected chronic diseases (not exactly the same as the top 7 chronic diseases mentioned above, but largely overlapped) during 2010 and 2014 at the state and national level.
 	</p>
 	<h3>Dataset</h3>
 	<p>
@@ -142,22 +142,22 @@ body {
 	<h3>Pre-processing</h3>
 	<ol>
 		<li>Import the downloaded data into Microsoft Excel.</li> 
-		<li>Since I am interested overall cases of mortality (instead of those based on gender, race, etc), I only choose data from “StratificationCatergory1” with a value of “Overall”.</li> 
-		<li>My focus was to find out the mortality of chronic diseases. I chose those topics (chronic diseases) that have mortality data. These include Alcohol (chronic liver disease mortality), Asthma (Asthma mortality rate), Cancer (invasive cancer (all sites combined), Cardiovascular Disease (mortality from total cardiovascular disease), Chronic Kidney Disease (mortality of end-stage renal disease), Chronic Obstructive Pulmonary Disease (mortality with chronic obstructive pulmonary disease as underlying cause among adults aged >= 45 years) and Diabetes (mortality due to diabetes reported as any listed cause of death).</li> 
+		<li>Since I am interested in overall cases of mortality (instead of those based on gender, race, etc), I only choose data from “StratificationCatergory1” with a value of “Overall”.</li> 
+		<li>My focus was to find out the mortality of chronic diseases. I chose those topics (chronic diseases) that have mortality data. These include Alcohol (chronic liver disease mortality), Asthma (Asthma mortality rate), Cancer (invasive cancer (all sites combined)), Cardiovascular Disease (mortality from total cardiovascular disease), Chronic Kidney Disease (mortality of end-stage renal disease), Chronic Obstructive Pulmonary Disease (mortality with chronic obstructive pulmonary disease as underlying cause among adults aged >= 45 years) and Diabetes (mortality due to diabetes reported as any listed cause of death).</li> 
 		<li>Many indicators have different “datavalueunit”, such as “%”, “per 10,000”, “case per 100,000” etc, I only chose those with an absolute number.</li> 
-		<li>I am also interested in State level data beyond this assignment, I kept the data at state level (I removed aggregated data at national level (“US” in “LocationAbbr” field)).</li> 
-		<li>The data set end up to only contain data from year 2010 to 2014, although original dataset contain some indicators up to 2016.</li> 
-		<li>For cancer data, it only contain average yearly mortality from 2010 to 2014, I expanded the data (average) to year 2010 through 2014, so now cancer has yearly data from 2010 to 2014 although they have same data from year to year.</li> 
-		<li>I removed some non-essential columns. The final dataset (for making charts in Scene 1 an 2) contains 5 columns: date (renamed from YearStart), State (renamed from LocationAbbr), Disease (combining Topic and Question), Mortality (renamed from DataValue) and Population (after combining with census data). Data for Scene 3 were prepared using Microsoft Excel's pivotTable from the dataset used for Scene 1 and 2.</li>
+		<li>I am also interested in State level data, so I kept the data at state level (I removed aggregated data at national level (“US” in “LocationAbbr” field)).</li> 
+		<li>The data set end up to only contain data from year 2010 to 2014, although original dataset contains some indicators up to 2016.</li> 
+		<li>For cancer data, it only contains average yearly mortality from 2010 to 2014, I expanded the data (average) to year 2010 through 2014, so now cancer has yearly data from 2010 to 2014 although they have same data from year to year.</li> 
+		<li>I removed some non-essential columns. The final processed dataset (for making charts in Scene 1 an 2) contains 5 columns: date (renamed from YearStart), State (renamed from LocationAbbr), Disease (combining Topic and Question), Mortality (renamed from DataValue) and Population (after combining with census data). Data for Scene 3 were prepared using Microsoft Excel's pivotTable from the dataset used for Scene 1 and 2.</li>
 		<li>Save the processed date set as csv files.</li>
 	</ol>
 	
 	<h3>Questions to answer</h3>
-	<ol><li>What chronic disease caused most death during the studied period?</li>
+	<ol><li>What chronic disease caused the most death during the studied period?</li>
 		<li>What's the trend of the chronic disease mortality during the studied period?</li>
 	</ol>
 	<h3>Navigation</h3>
-	<p>Using the 5 navigation button located in the header area to navigate through this visualization.</p>
+	<p>Using the 5 navigation buttons located in the header area to navigate through this visualization.</p>
 	
   </div>
 
@@ -169,8 +169,8 @@ body {
 		<li>The mortality difference among diseases.</li>
 		<li>The mortality difference among states.</li>
 		<li>The correlation between mortality and population.</li>
-		<li>The overall picture of what disease caused most death.</li>
-		<li>The actual data (absolute mortality) of each disease in each state at each year by hovering on data point (circle). The tooltip shows year, state and mortality for each data point.</li>
+		<li>The overall picture of what disease caused the most death.</li>
+		<li>The actual data (absolute mortality) of each disease in each state at each year by hovering over data point (circle). The tooltip shows year, state and mortality for each data point.</li>
 		<li>Change X and Y axis scale through drop down menu to see the transformation of the graph.</li>
 	</ul>
   </div>
@@ -193,7 +193,7 @@ body {
 	<p>The total mortality of each chronic disease at the national level from 2010 to 2014.</p> 
 	<h3>What can you explore?</h3>
 	<ul><li>The top chronic disease killer</li>
-		<li>The actual data (absolute mortality) of each disease at the national level during those 5 years by hovering on data point (bar).</li>
+		<li>The actual data (absolute mortality) of each disease at the national level during those 5 years by hovering over data point (bar).</li>
 	</ul>
   </div>
 
@@ -205,10 +205,10 @@ body {
 	<p>The trend of chronic disease mortality (absolute or rate) at the national level from 2010 to 2014.</p> 
 	<h3>What can you explore?</h3>
 	<ul>
-		<li>The top chronic disease killer at each year</li>
+		<li>The top chronic disease killer each year</li>
 		<li>The trend of mortality (absolute) during those years.</li>
-		<li>The trend of mortality (rate) during those years (since US population was growing for those years, it is best to compare rate (absolute mortality/population)). This can be done by choose corresponding data type from drop down menu.</li>
-		<li>The actual data (both absolute mortality and rate) of each disease at the national level during those 5 years by hovering on data point (circle).</li>
+		<li>The trend of mortality (rate) during those years (since US population was growing for those years, it is best to compare rate (absolute mortality/population)). This can be done by choosing corresponding data type from drop down menu.</li>
+		<li>The actual data (both absolute mortality and rate) of each disease at the national level during those 5 years by hovering over data point (circle).</li>
 	</ul>
   </div>
 
@@ -223,18 +223,18 @@ body {
   <div class="full" id="div5">
     <h2>About the Visualization</h2>
 	<h3>Narrative visualization structure</h3>
-	<p>This visualization is constructed with interactive slideshow hybrid structure. Each slide contains some information and/or chart. On certain slide, the viewer can also dive deep to find out more details regarding the data. It is best for the viewers to follow the slideshow but the viewers are free to jump around the scenes.</p>
+	<p>This visualization was constructed with interactive slideshow hybrid structure. Each slide contains some information and/or chart. On a certain slide, the viewer can also dive deep to find out more details regarding the data. It is best for the viewers to follow the slideshow but the viewers are free to jump around the scenes.</p>
 	<h3>Scenes</h3>
-	<p>Each slide represents a scene. Some text only and some with both text and chart.</p>
+	<p>Each slide represents a scene. Some scenes are text only and some with both text and chart.</p>
 		<ul>
 			<li><b>Introduciton</b></li>
-			<p>Short summary of importance of this study, where the data were obtained, how the data were pre-processed, what questions the visualization is trying to address and how to navigate through this visualization.</p>
+			<p>Short summary of the importance of this study, where the data were obtained, how the data were pre-processed, what questions the visualization is trying to address and how to navigate through this visualization.</p>
 			<li><b>Scene 1</b></li>
 			<p>It contains a scatter plot of mortality vs population at state level for each disease. Each disease is represented by one color. Log scale were used for both X and Y axis and the size of circle (data point: mortality for each disease in each state at each year) because of their data value range. Although I believe the log scale axises are the best to present data here, the viewers were given the options (through drop down menu) to change the axis scales to observe the transformation of the graph. Tooltip shows detailed information for each data point.</p>
 			<li><b>Scene 2</b></li>
-			<p>A bar chart to show the total mortality for each disease. I chose linear scale for mortality this time because it can show difference really well and the viewer can easily see the mortality difference among diseases. Color of the bar indicate disease. Height of the bar is proportional to mortality. Tooltips show the real mortality number.</p>
+			<p>A bar chart to show the total mortality for each disease. I chose linear scale for mortality this time because it can show difference really well and the viewer can easily see the mortality difference among diseases. Color of the bar indicated disease. Height of the bar is proportional to mortality. Tooltips show the real mortality number.</p>
 			<li><b>Scene 3</b></li>
-			<p>A line chart to show the trend of chronic disease mortality over time. I chose linear scale for mortality again because of subtle differences from year to year. Tooltips help the viewer to figure out the trend when the difference is really small. Also mortality rate is a better measure because of the ever-increasing populations in those years. The viewers can explore this by choosing corresponding options in drop down menu.</p>
+			<p>A line chart to show the trend of chronic disease mortality over time. I chose linear scale for mortality again because of subtle differences from year to year. Tooltips help the viewer to figure out the trend when the difference is really small. Also, mortality rate is a better measure because of the ever-increasing populations in those years. The viewers can explore this by choosing corresponding options in drop down menu.</p>
 			<li><b>About the Visualization</b></li>
 			<p>Description of narrative visualization structure, scenes, annotations, parameters, triggers, etc. of this visualization.</p>
 		</ul>	
@@ -255,10 +255,10 @@ body {
 	<p>This visualization was implemented using <a href = https://d3js.org>D3 JavaScript library</a>, css and HTML. No additional libraries were used.</p>
 	
 	<h3>System requirement</h3>
-	<p>It is best to view this visualization using modern browsers (such as Chrome 29+, IE 11+, Firefox 22+, Safari 10+ and Opera 48+) and on screens with at least 1280 by 768 resolution.</p>
+	<p>This visualization should work with most modern browsers (such as Chrome 29+, IE 11+, Firefox 22+, Safari 10+ and Opera 48+). But I have only tested it with Microsoft Edge 42, Firefox 61 and Chrome 66 and it worked properly with these browsers. There is some compatibility issues with Internet Explorer 11. This visualization needs a screen resolution at least 1280 by 768 for best results.</p>
 	<h3>Disclaimer</h3>
-	<p>I adapted ideas and codes from numerous resources (books, w3schools, Stack Overflow, bl.ocks.org, etc.).</p>
-	<p>Selected resources for this project:</p>
+	<p>I adapted ideas and codes from numerous resources.</p>
+	<p>Selected resources:</p>
 	<ul>
 		<li><a href="https://www.w3schools.com/">W3Schools</a></li>
 		<li><a href="https://bl.ocks.org/mbostock/3884955">Multi-Series Line Chart</a></li>
@@ -363,7 +363,7 @@ d3.csv("CDM1.csv", rowConverter, function(data) {
 					.attr("text-anchor", "middle")
 					.attr("fill", "black")
 					.text(formatTime(d.Year) + " | " + d.State + " | " + d.Mortality);
-				   })
+			})
 			//remove tooltip when off
 			.on("mouseout", function() {
 				d3.select(this)
