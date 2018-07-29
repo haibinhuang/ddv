@@ -96,6 +96,12 @@ body {
 	font-size: 14px;
 	font-weight: bold;
 }
+/* annotation */
+.annotation {
+	font-family: sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+}
 /* Select */
 #AorR{
 	position:absolute;
@@ -524,8 +530,7 @@ d3.csv("CDM1.csv", rowConverter, function(data) {
 			.scale(xScale2);
 	
 	var yAxis2 = d3.axisLeft()
-			.scale(yScale2)
-			.tickFormat(d3.format(".0e"));
+			.scale(yScale2);
 	//add x axis and label
 	svg2.append("g")
 		.call(xAxis2)
@@ -546,7 +551,7 @@ d3.csv("CDM1.csv", rowConverter, function(data) {
 	svg2.append("text")
 		.attr("class", "label")
 		.attr("x", 3 * padding - (height/2) )
-		.attr("y", -20)
+		.attr("y", -30)
 		.attr("text-anchor", "middle")
 		.attr("fill", "black")
 		.attr("transform", "rotate(-90)")
@@ -559,7 +564,14 @@ d3.csv("CDM1.csv", rowConverter, function(data) {
 		.attr("text-anchor", "middle")
 		.attr("fill", "black")
 		.text("Total Chronic Disease Mortality in US from Year 2010 to 2014");
-
+	//add annotatoin
+	svg2.append("text")
+		.attr("class", "annotation")
+		.attr("x", width/2 + padding)
+		.attr("y", -10)
+		.attr("text-anchor", "middle")
+		.attr("fill", "red")
+		.text("Top Killer");
 	});
 
 //function to read in data
@@ -643,6 +655,15 @@ function svg3_draw(data, yAxis_label, title) {
 		.attr("fill", "black")
 		.attr("transform", "rotate(-90)")
 		.text(yAxis_label);
+	//add annotation
+	svg3.append("text")
+		.attr("class", "annotation")
+		.attr("x", padding + 5)
+		.attr("y", 15)
+		.attr("text-anchor", "middle")
+		.attr("fill", "red")
+		.text("Top Killer");
+
 	//draw path
 	var disease = svg3.selectAll(".disease")
 		.data(diseases)
@@ -721,6 +742,11 @@ d3.select("#AorR")
 	});
 
 //show/hide default page: Introduction
+document.getElementById("introduction").style.background = "yellow";
+document.getElementById("scene1").style.background = "";
+document.getElementById("scene2").style.background = "";
+document.getElementById("scene3").style.background = "";
+document.getElementById("about").style.background = "";
 document.getElementById("div1").style.display = 'block';
 document.getElementById("div2_left_col").style.display = 'none';
 document.getElementById("div2_right_col").style.display = 'none';
@@ -732,6 +758,11 @@ document.getElementById("div5").style.display = 'none';
 
 //show Introduction page onclick
 document.getElementById("introduction").onclick  = function() {
+document.getElementById("introduction").style.background = "yellow";
+document.getElementById("scene1").style.background = "";
+document.getElementById("scene2").style.background = "";
+document.getElementById("scene3").style.background = "";
+document.getElementById("about").style.background = "";
 document.getElementById("div1").style.display = 'block';
 document.getElementById("div2_left_col").style.display = 'none';
 document.getElementById("div2_right_col").style.display = 'none';
@@ -744,6 +775,11 @@ document.getElementById("div5").style.display = 'none';
 
 //show Scene 1 page onclick
 document.getElementById("scene1").onclick  = function() {
+document.getElementById("introduction").style.background = "";
+document.getElementById("scene1").style.background = "yellow";
+document.getElementById("scene2").style.background = "";
+document.getElementById("scene3").style.background = "";
+document.getElementById("about").style.background = "";
 document.getElementById("div1").style.display = 'none';
 document.getElementById("div2_left_col").style.display = 'block';
 document.getElementById("div2_right_col").style.display = 'block';
@@ -756,6 +792,11 @@ document.getElementById("div5").style.display = 'none';
 
 //show Scene 2 page onclick
 document.getElementById("scene2").onclick  = function() {
+document.getElementById("introduction").style.background = "";
+document.getElementById("scene1").style.background = "";
+document.getElementById("scene2").style.background = "yellow";
+document.getElementById("scene3").style.background = "";
+document.getElementById("about").style.background = "";
 document.getElementById("div1").style.display = 'none';
 document.getElementById("div2_left_col").style.display = 'none';
 document.getElementById("div2_right_col").style.display = 'none';
@@ -768,6 +809,11 @@ document.getElementById("div5").style.display = 'none';
 
 //show Scene 3 page onclick
 document.getElementById("scene3").onclick  = function() {
+document.getElementById("introduction").style.background = "";
+document.getElementById("scene1").style.background = "";
+document.getElementById("scene2").style.background = "";
+document.getElementById("scene3").style.background = "yellow";
+document.getElementById("about").style.background = "";
 document.getElementById("div1").style.display = 'none';
 document.getElementById("div2_left_col").style.display = 'none';
 document.getElementById("div2_right_col").style.display = 'none';
@@ -780,6 +826,11 @@ document.getElementById("div5").style.display = 'none';
 
 //show About this Visualization page onclick
 document.getElementById("about").onclick  = function() {
+document.getElementById("introduction").style.background = "";
+document.getElementById("scene1").style.background = "";
+document.getElementById("scene2").style.background = "";
+document.getElementById("scene3").style.background = "";
+document.getElementById("about").style.background = "yellow";
 document.getElementById("div1").style.display = 'none';
 document.getElementById("div2_left_col").style.display = 'none';
 document.getElementById("div2_right_col").style.display = 'none';
